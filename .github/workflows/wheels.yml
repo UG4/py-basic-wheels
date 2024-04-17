@@ -19,13 +19,13 @@ jobs:
 
       - name: Checkout ughub
         uses: actions/checkout@v4
-         with:
+        with:
           repository: UG4/ughub
           path: ughub
 
       - name: Checkout ugcore
         uses: actions/checkout@v4
-         with:
+        with:
           repository: UG4/ugcore
           path: ugcore
 
