@@ -17,9 +17,19 @@ jobs:
       ## Used to host cibuildwheel
       #- uses: actions/setup-python@v3
 
-      - uses: actions/checkout@v4
+      - name: Checkout ughub
+        uses: actions/checkout@v4
          with:
-          repository: 'https://github.com/UG4/ugcore'
+          repository: UG4/ughub
+          path: ughub
+
+      - name: Checkout ugcore
+        uses: actions/checkout@v4
+         with:
+          repository: UG4/ugcore
+          path: ugcore
+
+
 
       - name: Build wheels
         uses: pypa/cibuildwheel@v2.17.0
