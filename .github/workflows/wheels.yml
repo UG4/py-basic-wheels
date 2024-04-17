@@ -12,12 +12,14 @@ jobs:
         os: [ubuntu-latest]
 
     steps:
-      - uses: actions/checkout@v4
+      # - uses: actions/checkout@v4
 
-      # Used to host cibuildwheel
-      - uses: actions/setup-python@v3
+      ## Used to host cibuildwheel
+      #- uses: actions/setup-python@v3
 
       - uses: actions/checkout@v4
+         with:
+          repository: 'https://github.com/UG4/ugcore'
 
       - name: Build wheels
         uses: pypa/cibuildwheel@v2.17.0
