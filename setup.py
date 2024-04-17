@@ -5,7 +5,7 @@ setup(
     description="a minimal example package (cpp version)",
     author='The scikit-build team',
     license="MIT",
-    packages=['hello'],
+    packages=['ugcore'],
     python_requires=">=3.7",
     cmake_args=['-DPARALLEL:BOOL=OFF']
 )
