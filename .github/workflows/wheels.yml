@@ -15,7 +15,9 @@ jobs:
 
       ## Used to host cibuildwheel
       #- uses: actions/setup-python@v3
-
+      - name: Checkout self
+        uses: actions/checkout@v4
+      
       - name: Checkout ughub
         uses: actions/checkout@v4
         with:
