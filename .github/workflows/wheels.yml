@@ -23,12 +23,17 @@ jobs:
         with:
           repository: UG4/ughub
           path: ughub
+        
+      - name: Install UG4 packages
+        run: |
+          python ughub/ughub.py init
+          python ughub/ughub.py install Limex
 
-      - name: Checkout ugcore
-        uses: actions/checkout@v4
-        with:
-          repository: UG4/ugcore
-          path: ugcore
+      #- name: Checkout ugcore
+      #  uses: actions/checkout@v4
+      #  with:
+      #    repository: UG4/ugcore
+      #    path: ugcore
 
       - name: Build wheels
         uses: pypa/cibuildwheel@v2.17.0
