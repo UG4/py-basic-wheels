@@ -8,5 +8,6 @@ setup(
     packages=['ugcore'],
     python_requires=">=3.10",
     # cmake_source_dir="ugcore",
-    cmake_args=['-DPARALLEL:BOOL=OFF','-DLimex:BOOL=ON', '-DCPU=1', '-DDIM=2']
+    # cmake_args=['-DPARALLEL:BOOL=OFF','-DLimex:BOOL=ON', '-DCPU=1', '-DDIM=2']
+    cmake_args=['-DPARALLEL:BOOL=OFF','-DLimex:BOOL=OFF', '-DCPU=1', '-DDIM=2']
 )
