@@ -39,6 +39,7 @@ jobs:
         uses: pypa/cibuildwheel@v2.17.0
         env:
           CIBW_BUILD_VERBOSITY:  1
+          CIBW_REPAIR_WHEEL_COMMAND: ''
         # env:
         #   CIBW_SOME_OPTION: value
         #    ...
