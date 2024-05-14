@@ -8,26 +8,23 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [macos-13, macos-14]
-        # os: [ubuntu-latest, windows-latest, macos-13, macos-14]
+        os: [ubuntu-latest]
 
     steps:
 
       ## Used to host cibuildwheel
-      #- uses: actions/setup-python@v3
+      # - uses: actions/setup-python@v5
       - name: Checkout self
         uses: actions/checkout@v4
       
       - name: Checkout ughub
-        uses: actions/checkout@v4
-        with:
-          repository: UG4/ughub
-          path: ughub
-        
+        run: |
+          git clone https://github.com/UG4/ughub.git
+
       - name: Install UG4 packages
         run: |
-          python ughub/ughub.py init
-          python ughub/ughub.py install Limex
+          python3 ughub/ughub.py init
+          python3 ughub/ughub.py install Limex
 
       #- name: Checkout ugcore
       #  uses: actions/checkout@v4
@@ -36,7 +33,7 @@ jobs:
       #    path: ugcore
 
       - name: Build wheels
-        uses: pypa/cibuildwheel@v2.17.0
+        uses: pypa/cibuildwheel@v2.18.0
         env:
           CIBW_BUILD_VERBOSITY:  1
           CIBW_REPAIR_WHEEL_COMMAND: ''
