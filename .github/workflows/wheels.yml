@@ -24,7 +24,9 @@ jobs:
       - name: Install UG4 packages
         run: |
           python3 ughub/ughub.py init
-          python3 ughub/ughub.py install Limex
+          python3 ughub/ughub.py install ConvectionDiffusion
+          python3 ughub/ughub.py git checkout feature-pybind11
+          
 
       #- name: Checkout ugcore
       #  uses: actions/checkout@v4
