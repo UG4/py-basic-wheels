@@ -26,4 +26,6 @@ cmake.minimum-version = ""
 cmake.version = ">=3.15"
 
 #
+cmake.args=['-DPARALLEL:BOOL=OFF','-DUSE_PYBIND11:BOOL=ON', '-DSTATIC_BUILD:BOOL=ON','-DCPU=1', '-DDIM=2','-DConvectionDiffusion:BOOL=ON' ] 
+
 logging.level = "DEBUG"
