@@ -53,7 +53,11 @@ jobs:
           CIBW_ENVIRONMENT: CFLAGS='-fPIC -fvisibility=hidden' CXXFLAGS='-fPIC -fvisibility=hidden'
           # Set flags on linux 
           # CIBW_ENVIRONMENT_LINUX: 
-          # CIBW_ENVIRONMENT_WINDOWS: 
+          # CIBW_ENVIRONMENT_WINDOWS:
+
+          # Only on Linux, we must forward environment variables explitly. 
+          CIBW_ENVIRONMENT_PASS_LINUX: CFLAGS CXXFLAGS
+          
         with:
           package-dir: .
           output-dir: wheelhouse
