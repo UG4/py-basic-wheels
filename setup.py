@@ -9,5 +9,4 @@ setup(
     python_requires=">=3.10",
     # cmake_source_dir="ugcore",
     # cmake_args=['-DPARALLEL:BOOL=OFF','-DLimex:BOOL=ON', '-DCPU=1', '-DDIM=2']
-    cmake_args=['-DPARALLEL:BOOL=OFF','-DUSE_PYBIND11:BOOL=ON', '-DSTATIC_BUILD:BOOL=ON','-DCPU=1', '-DDIM=2','-DConvectionDiffusion:BOOL=ON' ]
 )
