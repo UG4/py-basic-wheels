@@ -9,3 +9,7 @@ requires = [
 ]
 #build-backend = "setuptools.build_meta"
 build-backend = "scikit_build_core.build"
+
+[project]
+name = "ugpip_build_simplest"
+version = "0.0.1"
