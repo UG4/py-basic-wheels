@@ -50,12 +50,10 @@ jobs:
 
           
           # Environment variables.
-          # https://pip.pypa.io/en/stable/topics/configuration/#environment-variables
-          # CIBW_ENVIRONMENT: PIP_GLOBAL_OPTION="build_ext -j4"
-
-          # Set two flags on linux only
-          CIBW_ENVIRONMENT_LINUX: CFLAGS="-fPIC -fvisibility=hidden" CXXFLAGS="-fPIC -fvisibility=hidden"
-        
+          CIBW_ENVIRONMENT: CFLAGS='-fPIC -fvisibility=hidden' CXXFLAGS='-fPIC -fvisibility=hidden'
+          # Set flags on linux 
+          # CIBW_ENVIRONMENT_LINUX: 
+          # CIBW_ENVIRONMENT_WINDOWS: 
         with:
           package-dir: .
           output-dir: wheelhouse
