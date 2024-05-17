@@ -26,8 +26,8 @@ jobs:
           python3 ughub/ughub.py init
           python3 ughub/ughub.py install ConvectionDiffusion
           python3 ughub/ughub.py install PybindForUG4
-          python3 ughub/ughub git submodule init
-          python3 ughub/ughub git submodule update
+          python3 ughub/ughub.py git submodule init
+          python3 ughub/ughub.py git submodule update
           
       - name: Switch to Pybind feature branch(es), if any.
         run: python3 ughub/ughub.py git checkout feature-pybind11
