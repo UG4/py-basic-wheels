@@ -93,10 +93,10 @@ jobs:
       # retrieve your distributions here
       - name: Download all wheels
         uses: actions/download-artifact@v3
-        with:
-          pattern: ug4py-basic-wheels-*
-          path: wheelhouse
-          merge-multiple: true
+        #with:
+        #  pattern: ug4py-basic-wheels-*
+        #  path: wheelhouse
+        #  merge-multiple: true
           
       - name: Publish distribution 📦 to PyPI
         uses: pypa/gh-action-pypi-publish@release/v1
