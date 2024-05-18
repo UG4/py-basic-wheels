@@ -29,7 +29,8 @@ jobs:
       - name: Install UG4 packages
         run: |
           python3 ughub/ughub.py init
-          python3 ughub/ughub.py install ConvectionDiffusion Limex SuperLU6
+          python3 ughub/ughub.py install ugcore
+          # python3 ughub/ughub.py install ConvectionDiffusion Limex SuperLU6
           python3 ughub/ughub.py install PybindForUG4
           python3 ughub/ughub.py git submodule init
           python3 ughub/ughub.py git submodule update
@@ -89,12 +90,14 @@ jobs:
       # IMPORTANT: this permission is mandatory for trusted publishing
       id-token: write
     steps:
-    # retrieve your distributions here
+      # retrieve your distributions here
       - name: Download all wheels
         uses: actions/download-artifact@v3
         with:
-          name: ug4py-basic-wheels-*
-          path: ./wheelhouse/
+          pattern: ug4py-basic-wheels-*
+          path: wheelhouse
+          merge-multiple: true
+          
       - name: Publish distribution 📦 to PyPI
         uses: pypa/gh-action-pypi-publish@release/v1
         
