@@ -1,3 +1,7 @@
+==========================================================================================
+The modules 'pyugcore', 'pyconvectiondiffusion' and 'pylimex' are based on UG4.
+UG4 can be used under the following license:
+==========================================================================================
 
 UG4 - Unstructured Grids 4
 Copyright 2009-2022 Goethe Center for Scientific Computing, University Frankfurt
