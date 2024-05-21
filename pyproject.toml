@@ -11,7 +11,7 @@ requires = [
 build-backend = "scikit_build_core.build"
 
 [project]
-name = "ug4py-basic"
+name = "ug4py-base"
 version = "0.0.1"
 description = "This is a basic python package of UG4."
 readme = {file = "README.md", content-type = "text/markdown"}
