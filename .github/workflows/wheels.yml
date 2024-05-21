@@ -30,7 +30,7 @@ jobs:
         run: |
           python3 ughub/ughub.py init
           python3 ughub/ughub.py install ugcore
-          # python3 ughub/ughub.py install ConvectionDiffusion Limex SuperLU6
+          python3 ughub/ughub.py install ConvectionDiffusion Limex SuperLU6
           python3 ughub/ughub.py install PybindForUG4
           python3 ughub/ughub.py git submodule init
           python3 ughub/ughub.py git submodule update
