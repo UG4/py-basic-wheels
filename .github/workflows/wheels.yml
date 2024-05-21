@@ -13,7 +13,7 @@ jobs:
     strategy:
       matrix:
         # os: [ubuntu-latest, windows-latest, macos-latest]
-        os: [macos-latest]
+        os: [ubuntu-latest]
 
     steps:
 
@@ -49,7 +49,7 @@ jobs:
         uses: pypa/cibuildwheel@v2.18.0
         env:
           CIBW_BUILD_VERBOSITY:  1
-          CIBW_REPAIR_WHEEL_COMMAND: ''
+          # CIBW_REPAIR_WHEEL_COMMAND: ''
           CIBW_BUILD: cp310-*
           # Skip builds for 32-bit builds and some others...
           CIBW_SKIP: "*-win32 *-musllinux_* *linux_i686 *linux_s390x *linux_aarch64 *linux_s390x" 
