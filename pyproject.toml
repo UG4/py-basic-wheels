@@ -1,19 +1,16 @@
 [build-system]
 requires = [
-    #"setuptools>=42",
-    #"scikit-build>=0.3.3",
     "scikit-build-core",
     "cmake>=3.18",
     "ninja",
     "pybind11"
 ]
-#build-backend = "setuptools.build_meta"
 build-backend = "scikit_build_core.build"
 
 [project]
 name = "ug4py-base"
-version = "0.0.1"
-description = "This is a basic python package of UG4."
+version = "0.0.2"
+description = "This is a basic python package for UG4."
 readme = {file = "README.md", content-type = "text/markdown"}
 
 
