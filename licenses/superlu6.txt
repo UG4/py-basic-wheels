@@ -1,3 +1,7 @@
+==========================================================================================
+The module 'pysuperlu6' is based on SuperLU (v6.0.0, https://github.com/xiaoyeli/superlu). 
+The license of SuperLU follows:
+==========================================================================================
 
 Copyright (c) 2003, The Regents of the University of California, through
 Lawrence Berkeley National Laboratory (subject to receipt of any required 
