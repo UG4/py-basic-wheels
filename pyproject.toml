@@ -11,8 +11,12 @@ requires = [
 build-backend = "scikit_build_core.build"
 
 [project]
-name = "ugpip_build_simplest"
+name = "ug4py-basic"
 version = "0.0.1"
+description = "This is a basic python package of UG4."
+readme = {file = "README.md", content-type = "text/markdown"}
+
+
 
 [tool.scikit-build]
 #  cf. https://github.com/scikit-build/scikit-build-core
