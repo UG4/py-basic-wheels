@@ -1,6 +1,6 @@
 from skbuild import setup  # This line replaces 'from setuptools import setup'
 setup(
-    name="ug4",
+    name="ug4py-basic",
     version="0.0.1",
     description="a minimal example package (cpp version)",
     author='The scikit-build team',
