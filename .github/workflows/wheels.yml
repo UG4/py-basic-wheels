@@ -50,7 +50,8 @@ jobs:
         env:
           CIBW_BUILD_VERBOSITY:  1
           # CIBW_REPAIR_WHEEL_COMMAND: ''
-          CIBW_BUILD: cp310-*
+          # CIBW_BUILD: cp310-*
+          CIBW_BUILD: cp312-*
           # Skip builds for 32-bit builds and some others...
           CIBW_SKIP: "*-win32 *-musllinux_* *linux_i686 *linux_s390x *linux_aarch64 *linux_s390x" 
 
