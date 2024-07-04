@@ -1,0 +1,21 @@
+name: Build Source distribution 
+
+on: workflow_dispatch
+
+jobs:
+  build-sdist:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v1
+        with:
+          python-version: '3.12'
+      - name: Build sdist
+        run: |
+          python setup.py sdist
+      # XXX: Use pypa/gh-action-pypi-publish instead
+      - uses: actions/upload-artifact@v1
+        with:
+          name: sdist
+          path: dist
+
