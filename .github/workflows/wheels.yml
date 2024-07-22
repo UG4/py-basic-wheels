@@ -41,13 +41,10 @@ jobs:
         run: python3 ughub/ughub.py git checkout feature-pybind11
         continue-on-error: true
           
-      #- name: Checkout ugcore
-      #  uses: actions/checkout@v4
-      #  with:
-      #    repository: UG4/ugcore
-      #    path: ugcore
+      - name: Checkout MPI. 
+        uses: mpi4py/setup-mpi@v1
 
-      - name: Build wheels
+      - name: Build wheels.
         uses: pypa/cibuildwheel@v2.18.0
         env:
           CIBW_BUILD_VERBOSITY:  1
