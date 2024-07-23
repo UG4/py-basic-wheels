@@ -40,9 +40,10 @@ jobs:
       - name: Switch to Pybind feature branch(es), if any.
         run: python3 ughub/ughub.py git checkout feature-pybind11
         continue-on-error: true
-          
-      - name: Checkout MPI. 
-        uses: mpi4py/setup-mpi@v1
+
+      # We would need MPI in CIBW - no here...    
+      # - name: Checkout MPI. 
+      #  uses: mpi4py/setup-mpi@v1
 
       - name: Build wheels.
         uses: pypa/cibuildwheel@v2.18.0
