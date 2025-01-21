@@ -12,8 +12,8 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [macos-13]
-        #os: [macos-latest, ubuntu-latest, windows-latest] # 12 oldest
+        #os: [macos-13]
+        os: [macos-13, macos-latest, ubuntu-latest, windows-latest] # 12 oldest
         #os: [macos-latest, ubuntu-latest]
         #os: [windows-latest, macos-latest, macos-13]
 
@@ -50,7 +50,7 @@ jobs:
         env:
           CIBW_BUILD_VERBOSITY:  1
           # CIBW_REPAIR_WHEEL_COMMAND: ''
-          CIBW_BUILD: cp312-*
+          CIBW_BUILD: cp311-*
           # CIBW_BUILD: cp310-* cp312-*
           # Skip builds for 32-bit builds and some others...
           CIBW_SKIP: "*-win32 *-musllinux_* *linux_i686 *linux_s390x *linux_aarch64 *linux_s390x" 
