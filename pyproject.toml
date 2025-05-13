@@ -24,6 +24,6 @@ readme = {file = "README.md", content-type = "text/markdown"}
 cmake.version = ">=3.15"
 
 # cmake.args=['-DCMAKE_POSITION_INDEPENDENT_CODE=ON', '-DTARGET=libug4','-DPARALLEL:BOOL=OFF','-DUSE_PYBIND11:BOOL=ON', '-DSTATIC_BUILD:BOOL=ON','-DCPU=1', '-DDIM=2','-DConvectionDiffusion:BOOL=ON', '-DLimex:BOOL=ON' , '-DSuperLU6:BOOL=ON' ] 
-cmake.args=['-DCMAKE_POSITION_INDEPENDENT_CODE=ON', '-DTARGET=libug4','-DPARALLEL:BOOL=OFF','-DUSE_PYBIND11:BOOL=ON', '-DSTATIC_BUILD:BOOL=ON','-DDIM="1;2;3"', '-DCPU=1','-DConvectionDiffusion:BOOL=ON', '-DLimex:BOOL=ON', '-DUtil:BOOL=ON'] 
+cmake.args=['-DCMAKE_POSITION_INDEPENDENT_CODE=ON', '-DTARGET=libug4','-DPARALLEL:BOOL=OFF','-DUSE_PYBIND11:BOOL=ON', '-DSTATIC_BUILD:BOOL=ON','-DDIM="1;2;3"', '-DCPU=1','-DConvectionDiffusion:BOOL=OFF', '-DLimex:BOOL=OFF', '-DUtil:BOOL=OFF'] 
 
 logging.level = "DEBUG"
