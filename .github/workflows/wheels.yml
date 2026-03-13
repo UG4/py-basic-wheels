@@ -5,22 +5,11 @@ on: workflow_dispatch
 
 jobs:
   ######################
-  # Job: Build wheel
+  # Job: Build sdist
   ######################
-  build-wheels:
-    name: Build wheels on ${{ matrix.os }}
-    runs-on: ${{ matrix.os }}
-    strategy:
-      matrix:
-        #os: [macos-15-intel, macos-latest, ubuntu-latest, windows-latest] # 12 oldest
-        #os: [macos-15-intel, macos-latest, ubuntu-latest] # 12 oldest
-        os: [ubuntu-latest]
-        
-
+  build-sdist:
+    runs-on: ubuntu-latest
     steps:
-
-      ## Used to host cibuildwheel
-      # - uses: actions/setup-python@v5
       - name: Checkout self
         uses: actions/checkout@v4
       
@@ -40,7 +29,36 @@ jobs:
       - name: Switch to Pybind feature branch(es), if any.
         run: python3 ughub/ughub.py git checkout feature-pybind11
         continue-on-error: true
+      
+      - name: Install Python
+        run: |
+          pip3 install build
+          python3 -m build --sdist
+      
+      - uses: actions/upload-artifact@v4
+        with:
+          name: sdist
+          path: dist/*.tar.gz
 
+
+  ######################
+  # Job: Build wheel
+  ######################
+  build-wheels:
+    name: Build wheels on ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        #os: [macos-15-intel, macos-latest, ubuntu-latest, windows-latest] # 12 oldest
+        #os: [macos-15-intel, macos-latest, ubuntu-latest] # 12 oldest
+        os: [ubuntu-latest]
+        
+
+    steps:
+
+      ## Used to host cibuildwheel
+      # - uses: actions/setup-python@v5
+      
       # We would need MPI in CIBW - no here...    
       # - name: Checkout MPI. 
       #  uses: mpi4py/setup-mpi@v1
