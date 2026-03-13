@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout self
-        uses: actions/checkout@v4
+        uses: actions/checkout@v8
       
       - name: Checkout ughub
         run: |
@@ -35,7 +35,7 @@ jobs:
           pip3 install build
           python3 -m build --sdist
       
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v8
         with:
           name: sdist
           path: dist/*.tar.gz
@@ -52,7 +52,7 @@ jobs:
       matrix:
         #os: [macos-15-intel, macos-latest, ubuntu-latest, windows-latest] # 12 oldest
         #os: [macos-15-intel, macos-latest, ubuntu-latest] # 12 oldest
-        os: [ubuntu-latest]
+        os: []
         
 
     steps:
@@ -60,9 +60,9 @@ jobs:
       ## Used to host cibuildwheel
       # - uses: actions/setup-python@v5
       - name: Checkout self
-        uses: actions/checkout@v4
+        uses: actions/checkout@v8
       - name: Download sdist.
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v8
         with:
           name: sdist
           path: dist
@@ -97,7 +97,7 @@ jobs:
           # config-file: "pyproject.toml"
           config-file: "{package}/pyproject.toml"
 
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v8
         with:
           name: ug4py-basic-wheels-${{ matrix.os }}-${{ strategy.job-index }}
           path: ./wheelhouse/*.whl
@@ -118,8 +118,14 @@ jobs:
       id-token: write
     steps:
       # retrieve your distributions here
-      - name: Download all wheels
-        uses: actions/download-artifact@v4
+      - name: Download sdist.
+        uses: actions/download-artifact@v8
+        with:
+          name: sdist
+          path: dist/
+          
+      - name: Download wheels.
+        uses: actions/download-artifact@v8
         with:
           pattern: ug4py-basic-wheels-*
           merge-multiple: true
