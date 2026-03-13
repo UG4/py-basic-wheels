@@ -45,6 +45,7 @@ jobs:
   # Job: Build wheel
   ######################
   build-wheels:
+    needs: build-sdist
     name: Build wheels on ${{ matrix.os }}
     runs-on: ${{ matrix.os }}
     strategy:
