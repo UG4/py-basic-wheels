@@ -45,7 +45,7 @@ jobs:
       #  uses: mpi4py/setup-mpi@v1
 
       - name: Build wheels.
-        uses: pypa/cibuildwheel@v2.18.0
+        uses: pypa/cibuildwheel
         env:
           CIBW_BUILD_VERBOSITY:  1
           # CIBW_REPAIR_WHEEL_COMMAND: ''
