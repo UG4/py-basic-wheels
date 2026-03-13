@@ -58,7 +58,14 @@ jobs:
 
       ## Used to host cibuildwheel
       # - uses: actions/setup-python@v5
-      
+      - name: Checkout self
+        uses: actions/checkout@v4
+      - name: Download sdist.
+        uses: actions/download-artifact@v4
+        with:
+          name: sdist
+          path: dist
+
       # We would need MPI in CIBW - no here...    
       # - name: Checkout MPI. 
       #  uses: mpi4py/setup-mpi@v1
