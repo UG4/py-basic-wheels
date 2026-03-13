@@ -5,24 +5,13 @@ on: workflow_dispatch
 
 jobs:
   ######################
-  # Job: Build wheel
+  # Job: Build sdist
   ######################
-  build-wheels:
-    name: Build wheels on ${{ matrix.os }}
-    runs-on: ${{ matrix.os }}
-    strategy:
-      matrix:
-        #os: [macos-15-intel, macos-latest, ubuntu-latest, windows-latest] # 12 oldest
-        #os: [macos-15-intel, macos-latest, ubuntu-latest] # 12 oldest
-        os: [ubuntu-latest]
-        
-
+  build-sdist:
+    runs-on: ubuntu-latest
     steps:
-
-      ## Used to host cibuildwheel
-      # - uses: actions/setup-python@v5
       - name: Checkout self
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
       
       - name: Checkout ughub
         run: |
@@ -40,6 +29,43 @@ jobs:
       - name: Switch to Pybind feature branch(es), if any.
         run: python3 ughub/ughub.py git checkout feature-pybind11
         continue-on-error: true
+      
+      - name: Install Python
+        run: |
+          pip3 install build
+          python3 -m build --sdist
+      
+      - uses: actions/upload-artifact@v4
+        with:
+          name: sdist
+          path: dist/*.tar.gz
+
+
+  ######################
+  # Job: Build wheel
+  ######################
+  build-wheels:
+    needs: build-sdist
+    name: Build wheels on ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [macos-15-intel, macos-latest, ubuntu-latest, windows-latest] # 12 oldest
+        #os: [macos-15-intel, macos-latest, windows-latest] # 12 oldest
+        #os: [ubuntu-latest]
+        
+
+    steps:
+
+      ## Used to host cibuildwheel
+      # - uses: actions/setup-python@v5
+      - name: Checkout self
+        uses: actions/checkout@v6
+      - name: Download sdist.
+        uses: actions/download-artifact@v8
+        with:
+          name: sdist
+          path: dist
 
       # We would need MPI in CIBW - no here...    
       # - name: Checkout MPI. 
@@ -50,8 +76,8 @@ jobs:
         env:
           CIBW_BUILD_VERBOSITY:  1
           # CIBW_REPAIR_WHEEL_COMMAND: ''
-          # CIBW_BUILD: cp311-*
-          CIBW_BUILD: cp312-* cp314-*
+          CIBW_BUILD: cp314-*
+          # CIBW_BUILD: cp312-* cp314-*
           # Skip builds for 32-bit builds and some others...
           CIBW_SKIP: "*-win32 *-musllinux_* *linux_i686 *linux_s390x *linux_aarch64 *linux_s390x" 
 
@@ -66,7 +92,7 @@ jobs:
           # CIBW_ENVIRONMENT_PASS_LINUX: CFLAGS CXXFLAGS
           
         with:
-          package-dir: .
+          package-dir: dist/ug4py_base-0.3.0.tar.gz
           output-dir: wheelhouse
           # config-file: "pyproject.toml"
           config-file: "{package}/pyproject.toml"
@@ -92,8 +118,14 @@ jobs:
       id-token: write
     steps:
       # retrieve your distributions here
-      - name: Download all wheels
-        uses: actions/download-artifact@v4
+      - name: Download sdist.
+        uses: actions/download-artifact@v8
+        with:
+          name: sdist
+          path: dist/
+          
+      - name: Download wheels.
+        uses: actions/download-artifact@v8
         with:
           pattern: ug4py-basic-wheels-*
           merge-multiple: true
