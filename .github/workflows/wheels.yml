@@ -50,9 +50,9 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [macos-15-intel, macos-latest, ubuntu-latest, windows-latest] # 12 oldest
+        #os: [macos-15-intel, macos-latest, ubuntu-latest, windows-latest] # 12 oldest
         #os: [macos-15-intel, macos-latest, windows-latest] # 12 oldest
-        #os: [ubuntu-latest]
+        os: [windows-latest]
         
 
     steps:
