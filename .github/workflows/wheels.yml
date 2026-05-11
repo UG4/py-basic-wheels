@@ -92,7 +92,7 @@ jobs:
           # CIBW_ENVIRONMENT_PASS_LINUX: CFLAGS CXXFLAGS
           
         with:
-          package-dir: dist/ug4py_base-0.3.1.tar.gz
+          package-dir: dist/ug4py_base-0.3.2.tar.gz
           output-dir: wheelhouse
           # config-file: "pyproject.toml"
           config-file: "{package}/pyproject.toml"
